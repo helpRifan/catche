@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Catche — VTOP Captcha Solver",
+    "short_name": "Catche",
+    "description": "Automatically solves and fills VTOP login and course-registration captchas.",
+    "version": "5.0.0",
+    "homepage_url": "https://github.com/helpRifan/catche",
+    "icons": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "permissions": ["storage"],
+    "action": {
+        "default_title": "Catche",
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "32": "icons/icon32.png",
+            "48": "icons/icon48.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.vit.ac.in/*", "*://*.vitap.ac.in/*", "*://*.vitbhopal.ac.in/*"],
+            "js": ["contentScripts.js"],
+            "all_frames": true
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["velloreWeights.json", "chennaiWeights.json"],
+            "matches": ["*://*.vit.ac.in/*", "*://*.vitap.ac.in/*", "*://*.vitbhopal.ac.in/*"]
+        }
+    ]
+}
